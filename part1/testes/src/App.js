@@ -49,6 +49,8 @@ const App = () => {
       <History allClicks={allClicks} />
     </div>
   )
-}
+} 
+
+// slay
 
 export default App;
