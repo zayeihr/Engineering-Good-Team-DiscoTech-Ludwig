@@ -15,12 +15,14 @@ const History = (props) => {
       button press history: {props.allClicks.join(' ')}
     </div>
   )
-}
+  }
+
+
 
 const App = () => {
   const [left, setLeft] = useState(0)
   const [right, setRight] = useState(0)
-  const [allClicks, setAll] = useState([])
+  const [allClicks, setAll] = useState([]) // all clicks is is an array
   const [total, setTotal] = useState(0) 
 
   const handleLeftClick = () => {
@@ -44,7 +46,7 @@ const App = () => {
       <button onClick={handleRightClick}>right</button>
       {right}
       {/* <p>{allClicks.join(' ')}</p>  */}
-      <noscript> .join joins the stuff in an array into a string</noscript>
+      {/* .join joins the stuff in an array into a string */}
       <p>total: {total}</p>
       <History allClicks={allClicks} />
     </div>
