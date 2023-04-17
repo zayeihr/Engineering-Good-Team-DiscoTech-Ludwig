@@ -2,10 +2,18 @@ import { useState } from 'react'
 
 const Button = (props) => <button onClick = {props.click}>{props.text}</button>
 
+const StatisticLine = (props) => {
+  return (
+    <>
+    <p>{props.text}: {props.value}</p>
+    </>
+  )
+}
+
 const Statistics = (props) => {
   const {good, neutral, bad} = props
-  const average = (good * 1 + neutral*0 + bad * -1)
   const total = good + neutral + bad
+  const average = (good * 1 + neutral*0 + bad * -1)/total
   const positive = good/total*100
 
   if (isNaN(average) || isNaN(positive)) {
@@ -17,6 +25,10 @@ const Statistics = (props) => {
   } 
   return (
     <>
+      <StatisticLine text = 'good' value = {good} />
+      <StatisticLine text = 'neutral' value = {neutral} />
+      <StatisticLine text = 'bad' value = {bad} />
+      <StatisticLine text = 'all' value = {good + neutral + bad} />
       <p>average: {average}</p>
       <p>positive: {positive}%</p>
     </>
@@ -45,11 +57,7 @@ const App = () => {
     setNeutral(newNeutral)
   }
 
- const Numbers = {
-  good: good,
-  bad: bad,
-  neutral: neutral
- }
+
 
   return (
     <div>
@@ -58,9 +66,6 @@ const App = () => {
       <Button text = "neutral" click = {neutralClick}/>
       <Button text = "bad" click = {badClick} />
       <h1>statistics</h1>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad} </p>
       <Statistics good = {good} bad = {bad} neutral = {neutral}/>
     </div>
   )
