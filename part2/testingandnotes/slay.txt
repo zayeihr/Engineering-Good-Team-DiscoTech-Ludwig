@@ -1,0 +1,10 @@
+var triple = function(x) {
+    return x * 3
+}
+
+In js u can create an anonymous function and assign it to a variable so that shit like this:
+
+var waffle = triple
+waffle(30) 
+
+and you would get 90 back.
