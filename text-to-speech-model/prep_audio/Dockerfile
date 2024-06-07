@@ -1,4 +1,9 @@
-FROM python:3.6
+FROM python:3.8-slim
 
-# Add our code
-ADD prep_audio.py /code/prep_audio.py
+WORKDIR /app
+
+COPY . .
+
+RUN pip install flask
+
+CMD ["python", "app.py"]
