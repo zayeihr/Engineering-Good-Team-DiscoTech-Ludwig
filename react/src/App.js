@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import UploadZip from './components/UploadZip';
+import SpeakerSelect from './components/SpeakerSelect';
+import TrainTTS from './components/TrainTTS';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <nav>
+                    <ul>
+                        <li><Link to="/">Upload ZIP</Link></li>
+                        <li><Link to="/speaker-select">Speaker Select</Link></li>
+                        <li><Link to="/train-tts">Train TTS</Link></li>
+                    </ul>
+                </nav>
+                <Switch>
+                    <Route path="/" exact component={UploadZip} />
+                    <Route path="/speaker-select" component={SpeakerSelect} />
+                    <Route path="/train-tts" component={TrainTTS} />
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
